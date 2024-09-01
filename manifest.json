@@ -6,8 +6,8 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["*://*.primevideo.com/*"],
-      "js": ["content.js"]
+      "matches": ["*://*.primevideo.com/detail/*"],
+      "js": ["./src/content/index.js"]
     }
   ]
 }
