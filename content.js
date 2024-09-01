@@ -76,6 +76,13 @@ function createSpeedControl() {
 
   speedButton.addEventListener('click', function (e) {
     e.stopPropagation();
+
+    document.querySelectorAll('.fq40py8').forEach(menu => {
+      if (menu !== menuContent) {
+        menu.style.display = 'none';
+      }
+    });
+    
     menuContent.style.display = menuContent.style.display === 'none' ? 'block' : 'none';
   });
 
