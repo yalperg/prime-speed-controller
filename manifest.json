@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Prime Speed Controller",
+  "version": "1.0",
+  "description": "Adjust Prime Video Speed",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.primevideo.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
