@@ -6,10 +6,8 @@ const SPEED_OPTIONS = [
   { label: '2x', value: 2 },
 ];
 
-const SPEED_ICON = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSIxMyAxNyAxOCAxMiAxMyA3Ij48L3BvbHlsaW5lPjxwb2x5bGluZSBwb2ludHM9IjYgMTcgMTEgMTIgNiA3Ij48L3BvbHlsaW5lPjwvc3ZnPg==';
-
+const CHECK_ICON = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTUiIHZpZXdCb3g9IjAgMCAxOSAxNSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+UmVjdGFuZ2xlIDUwICsgUmVjdGFuZ2xlIDUwIENvcHk8L3RpdGxlPjxnIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PHBhdGggZD0iTTIuMTIxIDZsNi4zNjQgNi4zNjQtMi4xMjEgMi4xMjJMMCA4LjEyMnoiLz48cGF0aCBkPSJNMTguNzI4IDIuMTIxTDcuMTIgMTMuNzI4IDUgMTEuNjA3IDE2LjYwNyAwbDIuMTIgMi4xMjF6Ii8+PC9nPjwvc3ZnPg==';
 const SPEED_CONTROL_BUTTON_CLASS = 'atvwebplayersdk-speedcontrol-button';
-const SPEED_OPTION_CONTAINER_CLASS = 'atvwebplayersdk-speedoption-container';
 const SPEED_MENU_CLASS = 'fq40py8';
 const HIDEABLETOPBUTTONS_CONTAINER_CLASS = 'atvwebplayersdk-hideabletopbuttons-container';
 
@@ -21,84 +19,63 @@ function setPlaybackRate(speed) {
 
 function createSpeedControlHTML() {
   return `
-    <div class="f1qd5172 f7mv6lt">
-      <span>
-        <div class="fewcsle fcmecz0">
-          <div class="fqye4e3 f1ly7q5u fk9c3ap fz9ydgy f1xrlb00 f1hy0e6n fgbpje3 f1uteees f1h2a8xb f760yrh f1mic5r1 f13ipev8 ${SPEED_CONTROL_BUTTON_CLASS} f1a9wsg7 f15v4vpu frcngjs f12ossvl f45h" aria-label="Playback Speed" style="padding: 0px; min-width: 0px;">
-            <div class="f45h">
-              <img class="fuorrko" src="${SPEED_ICON}" alt="Speed">
-            </div>
-          </div>
-          <div class="f1wp6x33">
-            <div class="fhjv49j f1svrrcm f1tep9b4 fqlubke">Playback Speed</div>
-          </div>
-        </div>
-      </span>
-    </div>
+    <button class="speed-control-button" aria-label="Playback Speed">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-double-right speed-control-icon" viewBox="0 0 16 16">
+        <path fill="currentColor" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
+        <path fill="currentColor" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
+      </svg>
+      <span class="speed-control-tooltip">Playback Speed</span>
+    </button>
   `;
 }
 
 function createSpeedMenuHTML() {
   return `
-    <div>
-      <div class="${SPEED_MENU_CLASS}" style="margin-left: 50%; margin-right: auto; display: none; top: 0px;">
-        <div class="f1h19n93 fl0ztaa f12c980i tooltip">
-          <div class="f28nw8n fscgtd2 fsc5qjh f12c980i f1jmqpjd f1jtm5hu fv0eje7" style="left: 50%; transform: translateX(-50%);"></div>
-          <div class="f1hoalfx f1na3q09">
-            <div class="f1f1ygnm">
-              <div class="f179par0 fsp955f f1ani1ax ftmvva6 atvwebplayersdk-speedcontrol-container">
-                <h2 class="fhpnewt f1ly7q5u" tabindex="0">Playback Speed</h2>
-                <div class="f1mgyl9u f17kbju9 fcmecz0">
-                  <div class="f1dqudmj">
-                    ${SPEED_OPTIONS.map(createSpeedOptionHTML).join('')}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="speed-menu">
+      <h2 class="speed-menu-title">Playback Speed</h2>
+      ${SPEED_OPTIONS.map(createSpeedOptionHTML).join('')}
     </div>
   `;
 }
 
 function createSpeedOptionHTML(option) {
   return `
-    <div class="f15n26ui f1yahgwu fk7dnjf ${SPEED_OPTION_CONTAINER_CLASS} f11d1lkh">
-      <input type="radio" aria-label="${option.label}" style="opacity: 0; position: absolute; bottom: 8px;">
-      <div class="f1i37wl0 f6aowa3 f1txmk7m f12afzei f1wzj1ki f1y75yoj fb62a6i"></div>
-      <label class="f1l62hc4 f1ly7q5u f1o6anob f1v99b2e f1m37uyw f1hxvvt7 f164wq86 fiqc9rt atvwebplayersdk-speedoption-text">${option.label}</label>
+    <div class="speed-option">
+      <input type="radio" id="speed-${option.value}" name="speed" value="${option.value}" class="speed-option-radio">
+      <span class="speed-option-checkmark">
+        <img src="${CHECK_ICON}" alt="Check Icon" />
+      </span>
+      <label for="speed-${option.value}" class="speed-option-label">${option.label}</label>
     </div>
   `;
 }
 
 function createSpeedControl() {
   const speedControl = document.createElement('div');
-  speedControl.className = 'fewcsle fcmecz0';
+  speedControl.className = 'speed-control';
   speedControl.innerHTML = createSpeedControlHTML();
 
   const speedMenu = document.createElement('div');
-  speedMenu.className = 'f1mgyl9u f1kgbam0';
   speedMenu.innerHTML = createSpeedMenuHTML();
 
   speedControl.appendChild(speedMenu);
 
-  const speedButton = speedControl.querySelector(`.${SPEED_CONTROL_BUTTON_CLASS}`);
-  const menuContent = speedMenu.querySelector(`.${SPEED_MENU_CLASS}`);
+  const speedButton = speedControl.querySelector('.speed-control-button');
+  const menuContent = speedControl.querySelector('.speed-menu');
 
-  setupEventListeners(speedButton, menuContent, speedMenu);
+  setupEventListeners(speedButton, menuContent, speedControl);
 
   return speedControl;
 }
 
-function setupEventListeners(speedButton, menuContent, speedMenu) {
+function setupEventListeners(speedButton, menuContent, speedControl) {
   speedButton.addEventListener('click', (e) => toggleSpeedMenu(e, menuContent));
 
-  speedMenu.querySelectorAll(`.${SPEED_OPTION_CONTAINER_CLASS}`).forEach((option, index) => {
-    option.addEventListener('click', (e) => handleSpeedOptionClick(e, option, index));
+  speedControl.querySelectorAll('.speed-option').forEach((option) => {
+    option.addEventListener('click', (e) => handleSpeedOptionClick(e, option));
   });
 
-  updateSpeedMenuVisual(speedMenu.querySelectorAll(`.${SPEED_OPTION_CONTAINER_CLASS}`)[1]);
+  updateSpeedMenuVisual(speedControl.querySelector('input[value="1"]'));
 
   document.addEventListener('click', () => {
     menuContent.style.display = 'none';
@@ -119,28 +96,20 @@ function closeOtherMenus(currentMenu) {
   });
 }
 
-function handleSpeedOptionClick(e, option, index) {
+function handleSpeedOptionClick(e, option) {
   e.stopPropagation();
-  const speed = SPEED_OPTIONS[index].value;
+  const speed = parseFloat(option.querySelector('input').value);
   setPlaybackRate(speed);
-  updateSpeedMenuVisual(option);
+  updateSpeedMenuVisual(option.querySelector('input'));
 }
 
-function updateSpeedMenuVisual(selectedOption) {
-  const speedMenu = selectedOption.closest('.f1mgyl9u.f1kgbam0');
-  if (speedMenu) {
-    speedMenu.querySelectorAll(`.${SPEED_OPTION_CONTAINER_CLASS}`).forEach(opt => {
-      const div = opt.querySelector('div');
-      const label = opt.querySelector('label');
-      div.classList.toggle('f1bhki25', opt === selectedOption);
-      label.classList.toggle('f1f4ffwn', opt === selectedOption);
-    });
-  }
+function updateSpeedMenuVisual(selectedInput) {
+  selectedInput.checked = true;
 }
 
 function addSpeedControl(container) {
   if (container && container.firstChild && !container.querySelector(`.${SPEED_CONTROL_BUTTON_CLASS}`)) {
-    container.firstChild.appendChild(createSpeedControl());
+    container.firstChild.prepend(createSpeedControl());
   }
 }
 

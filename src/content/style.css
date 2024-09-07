@@ -1,0 +1,109 @@
+.speed-control {
+  position: relative;
+}
+
+.speed-control-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  padding: 0;
+}
+
+.speed-control-tooltip {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.speed-control-button:hover .speed-control-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.speed-control-icon {
+  color: #ccc;
+}
+
+.speed-control-icon:hover {
+  color: #fff;
+}
+
+.speed-menu {
+  width: 100px;
+  position: absolute;
+  background-color: #454545;
+  border-radius: 4px;
+  padding: 10px;
+  display: none;
+  z-index: 1000;
+  left: 20%;
+  transform: translate(-50%, 10px);
+  width: 120px;
+}
+
+.speed-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #454545;
+}
+
+.speed-menu-title {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.speed-option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.speed-option:hover .speed-option-label {
+  color: #fff;
+}
+
+.speed-option-radio {
+  display: none;
+}
+
+.speed-option-label {
+  color: #ccc;;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.speed-option-checkmark {
+    background-position: center;
+    background-size: 70% 55%;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.speed-option-checkmark img {
+  display: none;
+}
+
+.speed-option-radio:checked + .speed-option-checkmark img  {
+  display: block;
+}
