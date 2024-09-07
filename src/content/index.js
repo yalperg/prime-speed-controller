@@ -130,10 +130,3 @@ observer.observe(document.body, {
   childList: true,
   subtree: true,
 });
-
-chrome.runtime.onMessage.addListener(function(request) {
-  console.log('request', request);
-  if (request && request.type === 'navigate-detail') {
-    addSpeedControl();
-  }
-});
