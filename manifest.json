@@ -3,11 +3,14 @@
   "name": "Prime Speed Controller",
   "version": "1.0",
   "description": "Adjust Prime Video Speed",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "webRequest"],
   "content_scripts": [
     {
-      "matches": ["*://*.primevideo.com/detail/*"],
+      "matches": ["*://*.primevideo.com/*"],
       "js": ["./src/content/index.js"]
     }
-  ]
+  ],
+  "background": {
+    "js": ["./src/background/index.js"]
+  }
 }
