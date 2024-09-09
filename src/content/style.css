@@ -43,7 +43,6 @@
 }
 
 .speed-menu {
-  width: 100px;
   position: absolute;
   background-color: #454545;
   border-radius: 4px;
@@ -52,7 +51,7 @@
   z-index: 1000;
   left: 20%;
   transform: translate(-50%, 10px);
-  width: 120px;
+  width: 150px;
 }
 
 .speed-menu::before {
